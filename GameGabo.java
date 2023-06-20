@@ -1,3 +1,4 @@
+GameGabo.java
 package net.hb.day0616;
 
 import java.util.InputMismatchException;
@@ -27,20 +28,46 @@ public class GameGabo {
 //	}
 	
 	public void user() {
-		int user=0;
-		Scanner scan = new Scanner(System.in);
+		int user = 0;
 		System.out.println("가위(1) 바위(2) 보(3)");
-		user = Integer.parseInt(scan.nextLine());
+		while(true) {
+			if (scan.hasNextInt()) {
+				user = Integer.parseInt(scan.nextLine());
+				break;
+			} else {
+				System.out.println("숫자가아님");
+				user = Integer.parseInt(scan.nextLine());
+			}
+		}
+
+		
+		if (user == 1) {
+			System.out.println("당신은 '가위'를 골랐습니다");
+		} else if (user == 2) {
+			System.out.println("당신은 '바위'를 골랐습니다");
+		} else if (user == 3) {
+			System.out.println("당신은 '보'를 골랐습니다");
+		} else {
+			System.out.println("1부터 3사이의 숫자를 입력해주세요");
+			user = Integer.parseInt(scan.nextLine());
+		}
 		this.user = user;
 	}
 	
 	public void com() {
 		double com1 = Math.random() * 3;
 		com = (int) com1 + 1;
+		if(com==1) {
+			System.out.println("컴퓨터는 '가위'를 골랐습니다");
+		} else if(com==2) {
+			System.out.println("컴퓨터는 '바위'를 골랐습니다");
+		} else if(com==3) {
+			System.out.println("컴퓨터는 '보'를 골랐습니다");
+		}
 	}
 	
 	public void RSP() {
-		try {
+		//try {
 			while(true) {
 				if(sum==7) {
 					break;
@@ -48,35 +75,33 @@ public class GameGabo {
 				if(user-com == 0) {
 					draw++;
 				}
-				else if((user<1) || (user>3) ) {
-					System.out.println("1,2,3 중 하나를 입력해주세요");
-					user = Integer.parseInt(scan.nextLine());
-					continue;	
-				}
-				else if(user-com == -2 || user-com == 1 || user-com == 2) {
+//				else if((user<1) || (user>3) ) {
+//					System.out.println("1,2,3 중 하나를 입력해주세요");
+//					user = Integer.parseInt(scan.nextLine());
+//					continue;	
+//				}
+				else if(user==1&&com==3 || user==2 && com==1 || user==3 && com==1) {
 					win++;
 				}
-				else if(user-com == -1 || user-com == 2 ) {
-					lose++;
-				}
 				else {
-					System.out.println("숫자 123");
+					lose++;
 				}
 				user();
 				com();
+				result();
 				sum = (win+lose+draw);
 			}
-		}
-		catch (Exception e) {
-//			if(user!=1 || user!=2 || user!=3) {
-//				System.out.println("예외");
-//				scan.nextInt();
-//			}
+		//}
+		//catch (Exception e) {
+		//	if (user != 1 || user != 2 || user != 3) {
+		////		System.out.println("예외");
+		//		scan.nextInt();
+		//	}
+		//
+		//}
+		//finally {
 			
-		}
-		finally {
-			
-		}
+		//}
 	}
 	
 	public void result() {
