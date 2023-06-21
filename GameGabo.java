@@ -1,4 +1,3 @@
-GameGabo.java
 package net.hb.day0616;
 
 import java.util.InputMismatchException;
@@ -36,7 +35,7 @@ public class GameGabo {
 				break;
 			} else {
 				System.out.println("숫자가아님");
-				user = Integer.parseInt(scan.nextLine());
+				scan.nextLine();
 			}
 		}
 
@@ -88,8 +87,8 @@ public class GameGabo {
 				}
 				user();
 				com();
-				result();
 				sum = (win+lose+draw);
+				result();
 			}
 		//}
 		//catch (Exception e) {
@@ -112,7 +111,6 @@ public class GameGabo {
 	public static void main(String[] args) {
 		GameGabo abc = new GameGabo();
 		abc.RSP();
-		abc.result();
 	}//main end
 	
 	
